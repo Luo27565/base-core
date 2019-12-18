@@ -1,0 +1,37 @@
+.button-group {
+
+  display: flex;
+
+  align-items: center;
+
+  .button + .button {
+    margin-left: 16px;
+  }
+
+  .sky-blue {
+    background-color: rgb(22, 155, 213);
+    border-color: rgb(22, 155, 213);
+    color: white;
+  }
+
+  .blue {
+    background-color: #1976d2;
+    border-color: #1976d2;
+    color: white;
+  }
+
+  .red {
+    background-color: rgba(255, 26, 39, 0.83);
+    border-color: rgba(255, 26, 39, 0.83);
+    color: white;
+  }
+
+  .gray {
+    background-color: #cccccc;
+    border-color: #cccccc;
+    color: white;
+  }
+
+}
+
+

@@ -1,0 +1,12 @@
+{
+  "name": "x3-base-core",
+  "version": "0.0.2",
+  "peerDependencies": {
+    "@angular/common": "^8.0.1",
+    "@angular/core": "^8.0.1",
+    "@angular/material": "^8.0.2",
+    "@ngx-translate/core": "^11.0.1",
+    "@ngx-translate/http-loader": "^4.0.0",
+    "ngx-cookie-service": "^2.2.0"
+  }
+}

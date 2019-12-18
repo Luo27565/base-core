@@ -1,0 +1,7 @@
+<div class="img-column-wrap">
+  <img *ngIf="input.imgUrl" [src]="data[input.imgUrl]" alt="图片">
+  <div class="text-wrap">
+    <span class="title">{{ data[input.title] }}</span>
+    <span class="description">{{ data[input.description] }}</span>
+  </div>
+</div>

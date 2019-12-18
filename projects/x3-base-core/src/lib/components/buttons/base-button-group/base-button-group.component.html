@@ -1,0 +1,10 @@
+<ng-template [ngIf]="buttons">
+  <div class="button-group">
+    <div class="button" *ngFor="let button of buttons">
+      <button mat-stroked-button [disabled]="button.disabled" [class.blue]="button.theme === blue"
+              [class.red]="button.theme === red" [class.sky-blue]="button.theme === skyBlue"
+              [class.gray]="button.disabled===true"
+              (click)="onPress(button)">{{ button.name | translate }}</button>
+    </div>
+  </div>
+</ng-template>

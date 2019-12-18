@@ -1,0 +1,43 @@
+.form-item {
+  width: 100%;
+
+  .label {
+    font-size: 13px;
+    color: #666666;
+    padding: 8px 0;
+
+    .required {
+      color: red;
+      padding-left: 5px;
+    }
+  }
+
+  .readonly {
+    color: #aaaaaa;
+  }
+
+}
+
+.divImg {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 6px 0;
+
+  .img-wrap {
+    height: 64px;
+    width: 150px;
+    .img {
+      height: 64px;
+      max-width: 150px;
+    }
+  }
+
+  label {
+    margin: 8px 0;
+    color: #3d8bd9;
+    cursor: pointer;
+    font-size: 13px;
+    text-decoration: underline;
+  }
+}

@@ -1,0 +1,33 @@
+<mat-toolbar color="primary" class="mat-elevation-z2" *ngIf="model">
+
+  <mat-toolbar-row class="container">
+
+    <div class="content"><span>{{ model.title | translate }}</span></div>
+
+    <core-base-button-group [buttons]="model.buttons" (buttonPress)="onBaseButtonPress($event)"></core-base-button-group>
+
+    <ng-template [ngIf]="model.showClose !== false">
+      <core-base-button-group class="close-group" [buttons]="closeButtonGroups" (buttonPress)="closeWindow($event)"></core-base-button-group>
+    </ng-template>
+
+    <button class="menu-button" *ngIf="model && model.showMenu" mat-icon-button [matMenuTriggerFor]="messageMenu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+
+    <mat-menu #messageMenu="matMenu">
+
+      <button mat-menu-item (click)="onFullScreenPress()">{{ fullScreenService.full === true ? '取消全屏' : '全屏' }}</button>
+
+      <button mat-menu-item *ngFor="let item of model.menus"> {{ item.name | translate }}</button>
+
+    </mat-menu>
+
+  </mat-toolbar-row>
+
+</mat-toolbar>
+
+
+
+
+
+

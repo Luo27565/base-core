@@ -1,0 +1,34 @@
+<core-base-card [model]="model.card" class="base-card">
+
+  <ng-template [ngIf]="model.fields && model.fields.length > 0">
+    <div class="fields-container">
+      <mat-grid-list [cols]="model.cols" rowHeight="30px">
+        <mat-grid-tile *ngFor="let field of model.fields">
+
+          <ng-template [ngIf]="field.component === text">
+            <div class="field-item">
+              {{ field.name | translate }}
+              <span *ngIf="field.name">：</span>
+              <span class="value">{{ model.data[field.key] }}</span>
+            </div>
+          </ng-template>
+
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div>
+  </ng-template>
+
+  <ng-template [ngIf]="model.input">
+    <div class="remark-container">
+      <div *ngIf="model.input.name" class="remark-title">
+        <span>{{ model.input.name }}：</span>
+      </div>
+      <mat-form-field class="message" [class.item]="model.input.name" appearance="outline">
+        <label>
+          <textarea class="text" [placeholder]="model.input.placeholder" [(ngModel)]="model.input.value" matTextareaAutosize matInput></textarea>
+        </label>
+      </mat-form-field>
+    </div>
+  </ng-template>
+
+</core-base-card>

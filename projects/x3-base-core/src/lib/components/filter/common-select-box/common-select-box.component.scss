@@ -1,0 +1,23 @@
+.form {
+  display: inline-flex;
+  height: 34px;
+  align-items: center;
+
+  .label {
+    font-size: 13px;
+    color: #333333;
+  }
+
+  .select {
+    margin-left: 10px;
+    min-width: 90px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 2px;
+    height: 32px;
+    line-height: 32px;
+    font-size: 13px;
+    padding: 0 8px;
+    width: auto;
+  }
+
+}

@@ -1,0 +1,17 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav fixedInViewport="true" mode="over" #sidenav position="end" class="side" [autoFocus]="false">
+    <div class="container">
+      <div class="close">
+        <button mat-icon-button (click)="sidenav.close()">
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+      <div class="content">
+        <ng-content></ng-content>
+      </div>
+    </div>
+  </mat-sidenav>
+</mat-sidenav-container>
+
+
+

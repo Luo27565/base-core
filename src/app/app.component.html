@@ -1,0 +1,11 @@
+<div class="container">
+
+  <div class="space" *ngIf="!fullScreenService.full"></div>
+
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+
+  <div class="space" *ngIf="!fullScreenService.full"></div>
+
+</div>

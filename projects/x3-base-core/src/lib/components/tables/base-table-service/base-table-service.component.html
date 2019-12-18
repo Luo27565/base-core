@@ -1,0 +1,7 @@
+<core-base-table
+  [model]="model.table"
+  (tableRowPress)="tableRowPress.emit($event)"
+  (tableActionPress)="tableActionPress.emit($event)"
+  (tableRowSelect)="tableRowSelect.emit($event)"
+  (scrollEvent)="onScrollEvent()"
+></core-base-table>

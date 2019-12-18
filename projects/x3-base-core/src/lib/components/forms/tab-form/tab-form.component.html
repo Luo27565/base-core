@@ -1,0 +1,84 @@
+<ng-template [ngIf]="input">
+  <form [formGroup]="forms">
+    <div class="container" *ngFor="let field of input.fields" [ngSwitch]="field.component">
+      <span>{{ field.name | translate }}</span>
+      <span class="required" *ngIf="field.data.required === true">{{ '*' }}</span>
+
+      <ng-template [ngSwitchCase]="inputComponent">
+        <mat-form-field class="form-item" floatLabel="never">
+          <input #input matInput [maxLength]="field.data.maxLength" placeholder="{{ field.data.placeholder | translate }}" [formControlName]="field.id" />
+          <mat-hint align="end" *ngIf="field.data.isShowLength">{{input.value?.length || 0}}/{{field.data.maxLength}}</mat-hint>
+          <mat-error *ngIf="forms.controls[field.id].invalid && field.data.isShowValidator">{{getErrorMessage(field) | translate}}</mat-error>
+        </mat-form-field>
+      </ng-template>
+
+      <ng-template [ngSwitchCase]="selectComponent">
+        <mat-form-field class="form-item" floatLabel="never">
+          <mat-select placeholder="{{ field.data.placeholder | translate }}" [formControlName]="field.id">
+            <mat-option *ngFor="let option of field.data.data" [value]="option.key">{{ option.value | translate }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </ng-template>
+
+      <ng-template [ngSwitchCase]="radioComponent">
+        <div class="content">
+          <mat-radio-group [formControlName]="field.id" [labelPosition]="field.data.labelPosition">
+            <mat-radio-button [class.item]="i > 0" *ngFor="let option of field.data.data; let i = index" [value]="option.key">{{
+              option.value | translate
+            }}</mat-radio-button>
+          </mat-radio-group>
+        </div>
+        <div class="space"></div>
+      </ng-template>
+
+      <ng-template [ngSwitchCase]="checkboxComponent">
+        <div class="content">
+          <mat-checkbox
+            [formControlName]="field.id"
+            [labelPosition]="field.data.labelPosition"
+            *ngFor="let option of field.data.data"
+            [value]="option.key"
+            >{{ option.value | translate }}</mat-checkbox
+          >
+        </div>
+        <div class="space"></div>
+      </ng-template>
+
+      <ng-template [ngSwitchCase]="imageFileComponent">
+        <div class="form-item" floatLabel="never">
+          <input placeholder="" matInput [formControlName]="field.id" hidden />
+          <div class="divImg">
+            <div class="img-wrap" [ngStyle]="{'height': field.data.height}">
+              <img [src]="getImgUrl(field)" alt="暂无图片" class="img" [ngStyle]="{ 'height': field.data.height }" onError="this.src='http://moui.zhxit.com/Project/chajian/images/%E6%96%B0%E5%BB%BA%E6%8F%92%E4%BB%B6/u6136.png';"/>
+            </div>
+            <label for="photo">
+              {{ field.data.buttonName }}
+            </label>
+            <input
+              id="photo"
+              style="display: none"
+              type="file"
+              accept="image/png, image/jpeg, image/gif, image/jpg"
+              (change)="fileChange($event, field, forms.controls[field.id].value)"
+            />
+          </div>
+        </div>
+      </ng-template>
+
+      <ng-template [ngSwitchCase]="textareaComponent">
+        <mat-form-field class="area" floatLabel="never" appearance="outline">
+          <textarea
+            class="text"
+            matTextareaAutosize
+            matInput
+            [formControlName]="field.id"
+            [maxLength]="field.data.maxLength"
+            placeholder="{{ field.data.placeholder | translate }}"
+            #textarea
+          ></textarea>
+          <mat-hint align="end" *ngIf="field.data.isShowLength">{{textarea.value?.length || 0}}/{{field.data.maxLength}}</mat-hint>
+        </mat-form-field>
+      </ng-template>
+    </div>
+  </form>
+</ng-template>

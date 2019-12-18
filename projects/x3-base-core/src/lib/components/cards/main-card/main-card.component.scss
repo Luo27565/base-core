@@ -1,0 +1,44 @@
+.fields-container {
+  .field-item {
+    color: rgba(0, 0, 0, 0.54);
+    font-size: 13px;
+    margin-right: 2px;
+    height: auto;
+
+    .value {
+      line-height: 30px;
+      color: #333333;
+    }
+  }
+}
+
+.remark-container {
+  color: rgba(0, 0, 0, 0.54);
+  font-size: 13px;
+
+  .remark-title {
+    padding: 4px 0;
+  }
+
+  .message {
+    width: 100%;
+    font-size: 13px;
+    color: #333333;
+
+    .text {
+      min-height: 56px !important;
+    }
+  }
+}
+
+.item {
+  padding-top: 4px;
+}
+
+.mat-figure {
+  justify-content: left !important;
+}
+
+.base-card > .container > .content {
+  padding: 11.5px 20px !important;
+}

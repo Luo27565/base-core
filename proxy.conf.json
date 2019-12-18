@@ -1,0 +1,16 @@
+{
+  "/api": {
+    "target": "http://161.189.7.134:9888",
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/api": "/"
+    }
+  },
+  "/file": {
+    "target": "http://183.62.43.106:9809",
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/file": "/"
+    }
+  }
+}

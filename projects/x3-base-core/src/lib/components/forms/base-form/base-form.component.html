@@ -1,0 +1,57 @@
+<ng-template [ngIf]="input">
+  <form [formGroup]="forms">
+    <mat-form-field class="form-item" *ngFor="let field of input.fields" floatLabel="never" [ngSwitch]="field.component">
+      <div class="label">
+        <span>{{ field.name | translate }}</span>
+
+        <span *ngIf="field.data.placeholder">({{ field.data.placeholder | translate }})</span>
+
+        <span class="required">{{ field.data.required === true ? '*' : '' }}</span>
+      </div>
+
+      <!-- 输入框 -->
+      <ng-template [ngSwitchCase]="inputComponent">
+        <input placeholder="" matInput [maxLength]="field.data.maxLength" [formControlName]="field.id" />
+      </ng-template>
+
+      <!-- 下拉选择框 -->
+      <ng-template [ngSwitchCase]="selectComponent">
+        <mat-select [formControlName]="field.id">
+          <mat-option *ngFor="let option of field.data.data" [value]="option.key">{{ option.value | translate }}</mat-option>
+        </mat-select>
+      </ng-template>
+
+      <!-- 单选按钮 -->
+      <ng-template [ngSwitchCase]="radioComponent">
+        <mat-radio-group [formControlName]="field.id">
+          <mat-radio-button *ngFor="let option of field.data.data" [value]="option.key">{{ option.value | translate }}</mat-radio-button>
+        </mat-radio-group>
+      </ng-template>
+
+      <!-- 文本域 -->
+      <ng-template [ngSwitchCase]="textareaComponent">
+        <textarea matInput placeholder="" [formControlName]="field.id"></textarea>
+      </ng-template>
+
+      <!-- 图片上传 -->
+      <ng-template [ngSwitchCase]="imageFileComponent">
+        <input placeholder="" matInput [formControlName]="field.id" hidden />
+        <div class="divImg">
+          <div class="img-wrap">
+            <img [src]="getImgUrl(field.id)" alt="暂无图片" class="img" />
+          </div>
+          <label for="photo">
+            {{ field.data.buttonName }}
+          </label>
+          <input
+            id="photo"
+            style="display: none"
+            type="file"
+            accept="image/png, image/jpeg, image/gif, image/jpg"
+            (change)="fileChange($event, field)"
+          />
+        </div>
+      </ng-template>
+    </mat-form-field>
+  </form>
+</ng-template>

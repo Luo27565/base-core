@@ -1,0 +1,52 @@
+<div class="table-container" #tableContainer  [ngStyle]="{'height': model.height}">
+  <table mat-table [dataSource]="dataSource" class="table">
+    <ng-container matColumnDef="select" *ngIf="model.showSelect">
+      <th mat-header-cell *matHeaderCellDef>
+        <mat-checkbox
+          (change)="$event ? masterToggle() : null"
+          [checked]="selection.hasValue() && isAllSelected()"
+          [indeterminate]="selection.hasValue() && !isAllSelected()"
+          (change)="onSelect()"
+        ></mat-checkbox>
+      </th>
+
+      <td mat-cell *matCellDef="let row">
+        <mat-checkbox (change)="$event ? selection.toggle(row) : null" [checked]="selection.isSelected(row)" (change)="onSelect()"></mat-checkbox>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="{{ column.key }}" *ngFor="let column of model.columns" [ngSwitch]="column.component">
+      <th mat-header-cell *matHeaderCellDef [ngStyle]="{'max-width': '200px', 'width': column.width}">
+        <div [align]="column.align">{{ column.name | translate }}</div>
+      </th>
+
+      <td mat-cell *matCellDef="let element" [ngStyle]="{'max-width': '200px', 'width': column.width}" [align]="column.align">
+        <!-- 文本 可通过color属性来指定颜色 -->
+        <ng-template [ngSwitchCase]="text">
+          <span [style.color]="column.color">{{ element[column.data] }}</span>
+        </ng-template>
+
+        <!-- 左边是图片 上方是标题 下方是描述 -->
+        <ng-template [ngSwitchCase]="imageTitleDescription">
+          <core-table-img-column [input]="column.data" [data]="element"></core-table-img-column>
+        </ng-template>
+
+        <!-- 单个图片 -->
+        <ng-template [ngSwitchCase]="image">
+          <core-table-single-img-column [input]="element[column.data]"></core-table-single-img-column>
+        </ng-template>
+
+        <!-- 操作栏 -->
+        <ng-template [ngSwitchCase]="action">
+          <core-table-action-column [input]="column.data" (output)="onActionPress($event, element)"></core-table-action-column>
+        </ng-template>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+
+    <tr mat-row *matRowDef="let row; columns: displayedColumns" [class.active]="row[model.key] === activeId" (click)="onRowPress(row)"></tr>
+  </table>
+
+  <p class="tip" *ngIf="!model.dataSource.length">{{ 'CORE_0002' | translate}}</p>
+</div>

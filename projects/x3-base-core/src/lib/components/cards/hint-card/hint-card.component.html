@@ -1,0 +1,12 @@
+<ng-template [ngIf]="model">
+  <div *ngIf="model.hidden === false">
+    <core-base-card [model]="model.card" (iconButtonPress)="onBaseCardIconButtonPress($event)">
+      <ul>
+        <li *ngFor="let content of model.contents">{{ content | translate }}</li>
+      </ul>
+    </core-base-card>
+    <div class="content-space"></div>
+  </div>
+</ng-template>
+
+

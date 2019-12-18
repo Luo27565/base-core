@@ -1,0 +1,10 @@
+<div class="space"></div>
+<core-common-search-box *ngIf="model.commonSearchBox" [model]="model.commonSearchBox" (output)="onSearchChange($event)"></core-common-search-box>
+<div class="space" *ngIf="model.commonSearchBox"></div>
+<core-base-table-service
+  [model]="model.table"
+  (tableRowPress)="tableRowPress.emit($event)"
+  (tableActionPress)="tableActionPress.emit($event)"
+  (tableRowSelect)="tableRowSelect.emit($event)"
+  #ServiceTable
+></core-base-table-service>

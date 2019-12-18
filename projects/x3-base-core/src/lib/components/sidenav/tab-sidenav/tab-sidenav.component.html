@@ -1,0 +1,60 @@
+<core-base-sidenav #baseSideNav>
+  <ng-template [ngIf]="model">
+    <div class="tab-container" [style.width]="model.width">
+      <mat-tab-group>
+        <mat-tab [label]="tab.name | translate" *ngFor="let tab of model.data">
+          <!-- form 表单 -->
+          <ng-template [ngIf]="tab.component === formNav">
+            <div class="form-container">
+              <core-base-form [input]="tab.data" (output)="onLoadFormData(tab.id, $event)"></core-base-form>
+              <div class="button-container">
+                <core-base-button-group
+                  *ngIf="tab.buttons"
+                  (buttonPress)="onBaseButtonPress($event)"
+                  [buttons]="tab.buttons"
+                ></core-base-button-group>
+              </div>
+            </div>
+          </ng-template>
+
+          <ng-template [ngIf]="tab.component === tabForm">
+            <div class="form-container">
+              <core-tab-form [input]="tab.data" (output)="onLoadFormData(tab.id, $event)"></core-tab-form>
+              <div class="button-container">
+                <core-base-button-group
+                  *ngIf="tab.buttons"
+                  (buttonPress)="onBaseButtonPress($event)"
+                  [buttons]="tab.buttons"
+                ></core-base-button-group>
+              </div>
+            </div>
+          </ng-template>
+
+          <!-- 提示信息 -->
+          <ng-template [ngIf]="tab.component === hintsNav">
+            <core-hint-card *ngFor="let hint of tab.data" [model]="hint"></core-hint-card>
+          </ng-template>
+
+          <!-- 主单信息 -->
+          <ng-template [ngIf]="tab.component === mainNav">
+            <core-main-card *ngFor="let main of tab.data" [model]="main"></core-main-card>
+          </ng-template>
+
+          <!-- 表格 -->
+          <ng-template [ngIf]="tab.component === tableNav">
+            <core-base-tab-table
+              [model]="tab.data"
+              (tableRowSelect)="onTableRowSelect($event)"
+              (tableActionPress)="onTableActionPress($event)"
+              (tableRowPress)="onTableRowPress($event)"
+              (throwTableServiceEvent)="throwTableServiceEvent.emit($event)"
+            ></core-base-tab-table>
+            <div class="button-container">
+              <core-base-button-group *ngIf="tab.buttons" (buttonPress)="onBaseButtonPress($event)" [buttons]="tab.buttons"></core-base-button-group>
+            </div>
+          </ng-template>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </ng-template>
+</core-base-sidenav>

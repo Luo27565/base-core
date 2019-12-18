@@ -1,0 +1,12 @@
+<div class="container mat-elevation-z2">
+  <div class="header">
+    <span class="title">{{ model.title | translate }}</span>
+    <core-icon-button-group [buttons]="model.buttons" (iconButtonPress)="onIconButtonPress($event)"></core-icon-button-group>
+  </div>
+  <div class="content">
+    <ng-content></ng-content>
+  </div>
+</div>
+
+
+

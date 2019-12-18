@@ -1,0 +1,23 @@
+.container {
+  border-radius: 3px;
+
+  .header {
+    background-color: #eceff1;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+
+    .title {
+      font-size: 13px;
+      color: #333333;
+      font-weight: 500;
+    }
+  }
+
+  .content {
+    padding: 20px;
+  }
+
+}

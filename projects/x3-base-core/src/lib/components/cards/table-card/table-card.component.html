@@ -1,0 +1,6 @@
+<core-base-card [model]="model.card" (iconButtonPress)="onBaseCardIconButtonPress($event)">
+  <div class="filter-container" *ngIf="model.filter">
+    <core-base-filter [model]="model.filter" (output)="onBaseFilterSearch($event)"></core-base-filter>
+  </div>
+  <core-base-table-service [model]="model.table" (tableRowPress)="tableRowPress.emit($event)" (tableActionPress)="tableActionPress.emit($event)" #ServiceTable></core-base-table-service>
+</core-base-card>

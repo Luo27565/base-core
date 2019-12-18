@@ -1,0 +1,23 @@
+<form (ngSubmit)="onSearch()">
+  <div class="form" role="searchbox">
+
+    <div class="form-input-container">
+
+      <label>
+        <input name="search" class="search" [(ngModel)]="model.value" [placeholder]="model.placeholder | translate">
+      </label>
+
+      <div class="clear-container">
+        <button *ngIf="model && model.value && model.value.length !== 0" type="button" mat-icon-button class="clear" (click)="clearSearch()"><mat-icon inline class="icon">cancel</mat-icon></button>
+      </div>
+
+    </div>
+
+    <div class="form-button-container">
+      <button type="submit" mat-button class="submit"><i class="icon-search2"></i></button>
+    </div>
+
+  </div>
+</form>
+
+

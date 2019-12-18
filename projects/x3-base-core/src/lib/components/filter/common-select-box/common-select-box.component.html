@@ -1,0 +1,11 @@
+<div class="form" role="searchbox">
+
+  <div class="label">
+    <span> {{ model.label | translate }} : </span>
+  </div>
+
+  <mat-select class="select" [(ngModel)]="model.value" (selectionChange)="onSelectionChange($event)">
+    <mat-option *ngFor="let option of model.options" [value]="option.key"> {{ option.value | translate }} </mat-option>
+  </mat-select>
+
+</div>

@@ -1,0 +1,44 @@
+$rowHeight: 60px;
+$wrapHeight: 40px;
+$wrapWidth: 40px;
+
+.img-column-wrap {
+  height: $rowHeight;
+  display: flex;
+  align-items: center;
+  width: 100%;
+
+  img {
+    height: $wrapHeight;
+    width: 70px;
+    margin-right: 10px;
+  }
+
+  .text-wrap {
+    height: $wrapHeight;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 100%;
+
+
+    .title {
+      font-size: 14px;
+      width: 100%;
+      word-break:keep-all;/* 不换行 */
+      white-space:nowrap;/* 不换行 */
+      overflow:hidden;/* 内容超出宽度时隐藏超出部分的内容 */
+      text-overflow:ellipsis;/* 当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一起使用。*/
+    }
+
+    .description {
+      font-size: 14px;
+      color: rgb(145, 137, 137);
+      width: 100%;
+      word-break:keep-all;/* 不换行 */
+      white-space:nowrap;/* 不换行 */
+      overflow:hidden;/* 内容超出宽度时隐藏超出部分的内容 */
+      text-overflow:ellipsis;/* 当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一起使用。*/
+    }
+  }
+}

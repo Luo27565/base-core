@@ -1,0 +1,6 @@
+<div class="actions">
+  <a *ngFor="let action of input.actions" (click)="onPress($event, action)">
+    {{ action.name | translate }}
+  </a>
+</div>
+

@@ -1,0 +1,16 @@
+<form class="filter" *ngIf="model">
+
+  <div class="select-container">
+    <ng-template [ngIf]="model.commonSelectBox">
+      <core-common-select-box [model]="model.commonSelectBox" (output)="onSelectionChange($event)"></core-common-select-box>
+    </ng-template>
+  </div>
+
+  <div class="search-container">
+    <ng-template [ngIf]="model.commonSearchBox">
+      <core-common-search-box [model]="model.commonSearchBox" (output)="onSearchChange($event)"></core-common-search-box>
+    </ng-template>
+  </div>
+
+</form>
+

@@ -1,0 +1,11 @@
+<ng-template [ngIf]="buttons">
+  <div class="button-group">
+    <div class="button" *ngFor="let button of buttons">
+      <button mat-icon-button (click)="onPress(button)" [title]="button.name">
+        <mat-icon>{{ button.icon }}</mat-icon>
+      </button>
+    </div>
+  </div>
+</ng-template>
+
+
